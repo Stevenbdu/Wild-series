@@ -5,4 +5,7 @@
     <p>Episode {{ episode.number }} : {{ episode.title }}</p>
 
 {% endfor %}
+    <a href="{{ path('wild_showProgram', {'slug':program.title|replace({' ':'-'}) |lower})}}">
+        Retour
+    </a>
 {% endblock %}
