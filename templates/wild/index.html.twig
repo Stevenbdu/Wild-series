@@ -4,15 +4,14 @@
 
 {% block body %}
     <h1>Toutes les séries de la table program : </h1>
-    {% for program in programs %}
-        <div>
-            <a href="{{ path('wild_showProgram', {'slug':program.title|replace({' ':'-'}) |lower})}}">
-                <h2>{{ loop.index }} / {{ program.title }} - Catégorie : {{ program.category.name }}</h2></a>
-            <p>{{ program.summary }}</p>
+    <div class="container-fluid row align-items-center">
+        {% for program in programs %}
+        <div class="col-lg-3 offset-1 align-item-center">
+            <a href="{{ path('wild_showProgram', {'slug':program.title|replace({' ':'-'}) |lower}) }}">
+                <img src="{{ program.poster }}" class="poster_serie"></a>
         </div>
-    {% else %}
-        Aucune série trouvée.
-    {% endfor %}
+        {% endfor %}
+    </div>
     <a href="{{ path('app_index') }}">
         Retour à l'accueil
     </a>

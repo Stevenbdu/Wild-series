@@ -2,7 +2,7 @@
 {% block body %}
 <h1>{{ program.title }} Saison {{ season.nbseason }}</h1>
 {% for episode in episodes %}
-    <p>Episode {{ episode.number }} : {{ episode.title }}</p>
+    <a href="{{ path('show_episode', {'id': episode.id}) }}"><p>Episode {{ episode.number }} : {{ episode.title }}</p></a>
 
 {% endfor %}
     <a href="{{ path('wild_showProgram', {'slug':program.title|replace({' ':'-'}) |lower})}}">

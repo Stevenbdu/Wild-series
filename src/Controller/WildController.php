@@ -120,4 +120,20 @@ Class WildController extends AbstractController
             'program' => $program,
         ]);
     }
+
+    /**
+     * @param integer $id
+     * @Route("wild/showEpisode/{id}", name="show_episode").
+     */
+    public function showEpisode(Episode $episode)
+    {
+        $season = $episode->getSeason();
+        $program = $season->getProgram();
+
+        return $this->render('wild/episode.html.twig', [
+            'episode' => $episode,
+            'season' => $season,
+            'program' => $program,
+        ]);
+    }
 }
