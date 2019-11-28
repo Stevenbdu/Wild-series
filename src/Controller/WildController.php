@@ -6,9 +6,13 @@ use App\Entity\Category;
 use App\Entity\Episode;
 use App\Entity\Program;
 use App\Entity\Season;
+use http\Env\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Form\ProgramSearchType;
+use App\Form\CategoryType;
+
 
 Class WildController extends AbstractController
 {
@@ -18,6 +22,7 @@ Class WildController extends AbstractController
      */
     public function index(): Response
     {
+
         $programs = $this->getDoctrine()->getRepository(Program::class)->findAll();
 
         if (!$programs) {
@@ -136,4 +141,6 @@ Class WildController extends AbstractController
             'program' => $program,
         ]);
     }
+
+
 }

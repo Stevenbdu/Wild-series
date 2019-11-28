@@ -3,10 +3,10 @@
     <h1>{{ program.title }} Saison {{ season.nbseason }}</h1>
         <p>Episode {{ episode.number }} : {{ episode.title }}</p>
     <p>{{ episode.synopsis }}</p>
-    <a href="{{ path('wild_showProgram', {'slug':program.title|replace({' ':'-'}) |lower})}}">
+    <a href="{{ path('wild_showProgram', {'slug':program.title|replace({' ':'-'}) |lower})}}"><button class="btn btn-dark">
         Retour à la série
-    </a>
-    <a href="{{ path('show_season', {'id':season.id})}}">
+        </button></a>
+    <a href="{{ path('show_season', {'id':season.id})}}"><button class="btn btn-dark">
         Retour à la saison
-    </a>
+        </button></a>
 {% endblock %}

@@ -2,10 +2,22 @@
 {% block body %}
     <h1>Bienvenue sur Wild Series</h1>
     <a href="{{ path('wild_showProgram', { 'slug': "walking-dead" }) }}">
-        Testing show() method from WildController with a real program s slug.
+        <button class="btn btn-danger">
+            TWD
+        </button>
     </a>
-    <br>
     <a href="{{ path('wild_index') }}">
-        Testing index() method from WildController to view all programs.
+        <button class="btn btn-dark">
+            Tous les programmes
+        </button>
     </a>
+    <a href="{{ path('category') }}"><button class="btn btn-dark">Ajouter une catégorie</button></a>
+
+    <p>
+        Les catégories sont :
+        {% for category in categories %}
+            {{ category.name }}
+        {% endfor %}
+    </p>
+
 {% endblock %}

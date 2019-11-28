@@ -6,13 +6,13 @@
     <h1>Toutes les séries de la table program : </h1>
     <div class="container-fluid row align-items-center">
         {% for program in programs %}
-        <div class="col-lg-3 offset-1 align-item-center">
-            <a href="{{ path('wild_showProgram', {'slug':program.title|replace({' ':'-'}) |lower}) }}">
-                <img src="{{ program.poster }}" class="poster_serie"></a>
-        </div>
+            <div class="col-lg-3 offset-1 align-item-center">
+                <a href="{{ path('wild_showProgram', {'slug':program.title|replace({' ':'-'}) |lower}) }}">
+                    <img src="{{ program.poster }}" class="poster_serie"></a>
+            </div>
         {% endfor %}
     </div>
-    <a href="{{ path('app_index') }}">
-        Retour à l'accueil
-    </a>
+    <a href="{{ path('app_index') }}"><button class="btn btn-dark">Retour à l'accueil</button></a>
+
+
 {% endblock %}

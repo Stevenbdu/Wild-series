@@ -5,7 +5,7 @@
     <a href="{{ path('show_episode', {'id': episode.id}) }}"><p>Episode {{ episode.number }} : {{ episode.title }}</p></a>
 
 {% endfor %}
-    <a href="{{ path('wild_showProgram', {'slug':program.title|replace({' ':'-'}) |lower})}}">
-        Retour
+    <a href="{{ path('wild_showProgram', {'slug':program.title|replace({' ':'-'}) |lower})}}"><button class="btn btn-dark">
+            Retour</button>
     </a>
 {% endblock %}
