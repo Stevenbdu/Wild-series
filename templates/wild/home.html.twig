@@ -6,13 +6,7 @@
             TWD
         </button>
     </a>
-    <a href="{{ path('program_index') }}">
-        <button class="btn btn-dark">
-            Tous les programmes
-        </button>
-    </a>
     <a href="{{ path('category') }}"><button class="btn btn-dark">Ajouter une catégorie</button></a>
-
     <p>
         Les catégories sont :
         {% for category in categories %}
@@ -20,4 +14,13 @@
         {% endfor %}
     </p>
 
+    <a href="{{ path('program_index') }}">
+            Admin Série
+    </a>
+    <a href="{{ path('season_index') }}">
+            Admin Saison
+    </a>
+    <a href="{{ path('episode_index') }}">
+            Admin Episode
+    </a>
 {% endblock %}
