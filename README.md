@@ -7,3 +7,7 @@ Vidéo pour la quête 11
 https://drive.google.com/file/d/1QwFx08gT1N2-2QdpUiFj0hHzzB8RtQZI/view?usp=sharing
 Vidéo pour la quête 14 
 https://drive.google.com/file/d/1tDAjmjCpk4jqffDa8cOEkp6W6Reemm7k/view?usp=sharing
+Vidéo pour la quête 15
+https://drive.google.com/file/d/176mZB22q5_r4FMPyjriaE171RCTY3npB/view?usp=sharing
+Vidéo pour la quête 16
+https://drive.google.com/file/d/1CPKgcalUwEYePRpyKaI_I__4M_LZgmvD/view?usp=sharing
