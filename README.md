@@ -15,3 +15,5 @@ Vidéo pour la quête 17
 https://drive.google.com/file/d/14uTod-A-j-rNlWR_I_bNWk1A3FSVJT4Z/view?usp=sharing
 Vidéo pour la quête 18
 https://drive.google.com/file/d/1tt1dMucKTtZcxhaRGwxtA2vhlrehX6ce/view?usp=sharing
+Vidéo pour la quête 19 
+https://drive.google.com/file/d/1lK62AvI_3AvwJI2WdmXmsX1Tf_9KhKYl/view?usp=sharing
