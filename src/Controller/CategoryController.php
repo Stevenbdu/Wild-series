@@ -7,16 +7,19 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Category;
 use App\Form\CategoryType;
 use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 
 class CategoryController extends AbstractController
 {
     /**
      * @Route("/category", name="category")
+     * @IsGranted("ROLE_ADMIN")
      */
     public function add(Request $request)
     {
         $category = new Category();
+
 
         $form = $this->createForm(CategoryType::class, $category);
         $form->handleRequest($request);

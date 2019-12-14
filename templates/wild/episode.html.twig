@@ -21,9 +21,13 @@
         <tbody>
         {% for comment in episode.comments %}
             <tr>
+
                 <td>{{ comment.author.email }}</td>
                 <td>{{ comment.rate }}</td>
                 <td>{{ comment.comment }}</td>
+                {% if is_granted('ROLE_SUBSCRIBER') %}
+                <td>{% include 'wild/delete_comment.html.twig' %}</td>
+                {% endif %}
             </tr>
         {% endfor %}
         </tbody>

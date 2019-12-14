@@ -6,13 +6,13 @@
             TWD
         </button>
     </a>
-    <a href="{{ path('category') }}"><button class="btn btn-dark">Ajouter une catégorie</button></a>
     <p>
         Les catégories sont :
         {% for category in categories %}
             {{ category.name }}
         {% endfor %}
     </p>
+    {% if is_granted('ROLE_ADMIN') %}
     <a href="{{ path('program_index') }}">
             Admin Série
     </a>
@@ -22,4 +22,7 @@
     <a href="{{ path('episode_index') }}">
             Admin Episode
     </a>
+        <a href="{{ path('category') }}"><button class="btn btn-dark">Ajouter une catégorie</button></a>
+
+    {% endif %}
 {% endblock %}

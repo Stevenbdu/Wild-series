@@ -2,18 +2,22 @@
 // src/Controller/WildController.php
 namespace App\Controller;
 
+use App\Form\CommentType;
 use App\Entity\Actor;
 use App\Entity\Category;
 use App\Entity\Episode;
 use App\Entity\Program;
 use App\Entity\Season;
-use http\Env\Request;
+use App\Entity\Comment;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Form\ProgramSearchType;
 use App\Form\CategoryType;
 use App\Repository\ProgramRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 
 Class WildController extends AbstractController
@@ -108,7 +112,7 @@ Class WildController extends AbstractController
      * @param integer $id
      * @Route("wild/showSeason/{id}", name="show_season").
      */
-    public function showBySeason(int $id) :Response
+    public function showBySeason(int $id): Response
     {
         if (!$id) {
             throw $this
@@ -132,17 +136,37 @@ Class WildController extends AbstractController
      * @param integer $id
      * @Route("wild/showEpisode/{id}", name="show_episode").
      */
-    public function showEpisode(Episode $episode)
+    public function showEpisode(Episode $episode, Request $request)
     {
+        $comment = new Comment();
+
         $season = $episode->getSeason();
         $program = $season->getProgram();
+
+        $form = $this->createForm(CommentType::class, $comment);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
+            $comment->setAuthor($this->getUser());
+            $comment->setEpisode($episode);
+            $comment->setRate($data->getRate());
+            $comment->setComment($data->getComment());
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($comment);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('show_episode', ['id' => $episode->getId()]);
+        }
 
         return $this->render('wild/episode.html.twig', [
             'episode' => $episode,
             'season' => $season,
             'program' => $program,
+            'form' => $form->createView()
         ]);
     }
+
     /**
      * @param integer $id
      * @Route("wild/actor/{id}", name="show_actor").
