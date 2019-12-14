@@ -9,4 +9,34 @@
     <a href="{{ path('show_season', {'id':season.id})}}"><button class="btn btn-dark">
         Retour à la saison
         </button></a>
+    <h2>Les commentaires</h2>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Utilisateur</th>
+            <th>Note</th>
+            <th>Commentaire</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for comment in episode.comments %}
+            <tr>
+                <td>{{ comment.author.email }}</td>
+                <td>{{ comment.rate }}</td>
+                <td>{{ comment.comment }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {% if app.user %}
+        <h3>Ajouter un commentaire</h3>
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button class="btn btn-success">{{ button_label|default('Créer') }}</button>
+        {{ form_end(form) }}
+    {% else %}
+        <h4>Veuillez-vous <a href="{{ path('app_login') }}">connecter</a> pour pouvoir écrire un commentaire</h4>
+
+    {% endif %}
 {% endblock %}
