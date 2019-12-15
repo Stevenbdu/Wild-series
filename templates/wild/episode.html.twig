@@ -24,7 +24,7 @@
                 <td>{{ comment.author.email }}</td>
                 <td>{{ comment.rate }}</td>
                 <td>{{ comment.comment }}</td>
-                {% if is_granted('ROLE_SUBSCRIBER') %}
+                {% if is_granted('ROLE_USER') %}
                     {% if  (app.user.email == comment.author.email) or (is_granted('ROLE_ADMIN'))  %}
                 <td>{% include 'wild/delete_comment.html.twig' %}</td>
                         {% endif %}
