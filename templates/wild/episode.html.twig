@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 {% block body %}
     <h1>{{ program.title }} Saison {{ season.nbseason }}</h1>
-        <p>Episode {{ episode.number }} : {{ episode.title }}</p>
+    <p>Episode {{ episode.number }} : {{ episode.title }}</p>
     <p>{{ episode.synopsis }}</p>
     <a href="{{ path('wild_showProgram', {'slug':program.title|replace({' ':'-'}) |lower})}}"><button class="btn btn-dark">
-        Retour à la série
+            Retour à la série
         </button></a>
     <a href="{{ path('show_season', {'id':season.id})}}"><button class="btn btn-dark">
-        Retour à la saison
+            Retour à la saison
         </button></a>
     <h2>Les commentaires</h2>
     <table class="table">
@@ -21,12 +21,13 @@
         <tbody>
         {% for comment in episode.comments %}
             <tr>
-
                 <td>{{ comment.author.email }}</td>
                 <td>{{ comment.rate }}</td>
                 <td>{{ comment.comment }}</td>
-                {% if is_granted('ROLE_SUBSCRIBER') %}
-                <td>{% include 'wild/delete_comment.html.twig' %}</td>
+                {% if is_granted('ROLE_USER') %}
+                    {% if  (app.user.email == comment.author.email) or (is_granted('ROLE_ADMIN'))  %}
+                        <td>{% include 'wild/delete_comment.html.twig' %}</td>
+                    {% endif %}
                 {% endif %}
             </tr>
         {% endfor %}
