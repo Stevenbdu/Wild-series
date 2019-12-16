@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use   Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CategoryRepository")
@@ -20,6 +21,7 @@ class Category
     {
         $this->programs = new ArrayCollection();
     }
+
     /**
      * @return Collection|Program[]
      */
@@ -27,6 +29,7 @@ class Category
     {
         return $this->programs;
     }
+
     /**
      * param Program $program
      * @return Category
@@ -40,13 +43,14 @@ class Category
 
         return $this;
     }
+
     /**
      * @param Program $program
      * @return Category
      */
     public function removeProgram(Program $program): self
     {
-        if ($this->program>contains($program)) {
+        if ($this->program > contains($program)) {
             $this->programs->removeElement($program);
             // set the owning side to null (unless already changed)
             if ($program->getCategory() === $this) {
@@ -66,6 +70,8 @@ class Category
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\NotBlank(message="Le champs est vide")
+     * @Assert\Length(max="100", maxMessage="Le nom :{{value}} est trop long, veuillez ne pas dépasser {{limit}} caractères")
      */
     private $name;
 
