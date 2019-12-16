@@ -13,16 +13,25 @@
         {% endfor %}
     </p>
     {% if is_granted('ROLE_ADMIN') %}
-    <a href="{{ path('program_index') }}">
+        <a href="{{ path('program_index') }}">
             Admin Série
-    </a>
-    <a href="{{ path('season_index') }}">
+        </a>
+        <a href="{{ path('season_index') }}">
             Admin Saison
-    </a>
-    <a href="{{ path('episode_index') }}">
+        </a>
+        <a href="{{ path('episode_index') }}">
             Admin Episode
-    </a>
-        <a href="{{ path('category') }}"><button class="btn btn-dark">Ajouter une catégorie</button></a>
+        </a>
+        <a href="{{ path('category') }}">
+            <button class="btn btn-dark">Ajouter une catégorie</button>
+        </a>
 
     {% endif %}
+    <p>Nos derniers ajouts :</p>
+    <ul>
+        {% for program in programs %}
+            <li>{{ program.title }}</li>
+        {% endfor %}
+    </ul>
+
 {% endblock %}

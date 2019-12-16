@@ -9,6 +9,7 @@
 namespace App\Controller;
 
 
+use App\Entity\Program;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -22,9 +23,11 @@ class DefaultController extends AbstractController
     public function index()
     {
         $categories = $this->getDoctrine()->getRepository(Category::class)->findAll();
+        $program = $this->getDoctrine()->getRepository(Program::class)->findBy([], ['id' => 'DESC'], 3);
 
         return $this->render('wild/home.html.twig', [
             'categories' => $categories,
+            'programs' => $program
         ]);
     }
 }
